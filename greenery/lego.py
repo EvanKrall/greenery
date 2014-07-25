@@ -825,6 +825,15 @@ class multiplier:
 		except nomatch:
 			pass
 
+		# {,3}
+		try:
+			j = static(string, i, "{,")
+			max, j = matchInteger(string, j)
+			j = static(string, j, "}")
+			return multiplier(bound(0), bound(max)), j
+		except nomatch:
+			pass
+
 		# "?"/"*"/"+"/""
 		# we do these in reverse order of symbol length, because
 		# that forces "" to be done last
