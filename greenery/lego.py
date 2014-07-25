@@ -1131,6 +1131,10 @@ class mult(lego):
 	def match(cls, string, i):
 		try:
 			j = static(string, i, "(")
+			try:
+				j = static(string, j, "?:")
+			except nomatch:
+				pass
 			cand, j = pattern.match(string, j)
 			j = static(string, j, ")")
 		except nomatch:
